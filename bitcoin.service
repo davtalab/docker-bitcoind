@@ -1,0 +1,10 @@
+[Unit]
+Description=Start bitcoind daemon with conf [/opt/bitcoin/bitcoin.conf]
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/bitcoind -datadir=/opt/bitcoin -conf=/opt/bitcoin/bitcoin.conf
+
+[Install]
+WantedBy=multi-user.target
