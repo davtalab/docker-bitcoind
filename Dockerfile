@@ -32,7 +32,6 @@ RUN echo `openssl rand -base64 128` > pass; sed -e 's/[\/&]/\\&/g' pass > pass.T
 #we've build the binary, now copy it so we can execute anywhere in the container
 RUN chown -R bitcoin:bitcoin /home/bitcoin
 RUN chown -R bitcoin:bitcoin /opt/bitcoin
-RUN chown -R bitcoin:bitcoin /opt/bitcoin
 RUN systemctl enable bitcoind
 RUN systemctl enable sshd
 
