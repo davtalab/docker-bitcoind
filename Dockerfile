@@ -1,5 +1,5 @@
 FROM maci0/systemd
-
+MAINTAINER "Sean McCully <sean_mccully@yahoo.com>"
 RUN yum update -y
 RUN yum groups mark convert
 RUN yum group install -y "Development Tools"
