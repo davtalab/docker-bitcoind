@@ -10,7 +10,7 @@ RUN yum install -y sudo vim git openssh-server openssh-clients openssl openssl-d
 RUN useradd -mc "Bit₵oin U$er" bitcoin -p abioytFqlXVrA
 #allow passwordless sudo for convience
 RUN echo 'bitcoin ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-RUN git clone -b 0.9 git://github.com/bitcoin/bitcoin.git /home/bitcoin/bitcoin
+RUN git clone -b 0.10 git://github.com/bitcoin/bitcoin.git /home/bitcoin/bitcoin
 RUN git clone -b OpenSSL_1_0_2-stable https://github.com/openssl/openssl.git /home/bitcoin/openssl
 
 RUN cd /home/bitcoin/openssl && ./config --prefix=/usr shared enable-ec enable-ecdh enable-ecdsa
