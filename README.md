@@ -1,7 +1,6 @@
 # docker-bitcoind
 # Container with bitcoin daemon running under systemd, and ssh acess
-Starting the container will start systemd with sshd and bitcoind enabled. ssh access provided 
- with bitcoin user and sudo escalation privileges. 
+Building this container will build a fresh openssl (OpenSSL_1_0_2-stable) and bitcoind (0.9) with modified systemd for docker support. bitcoind rpc_user and rpc_password randomly generated at build time with openssl. Starting the container will start systemd with sshd and bitcoind enabled. ssh access provided with bitcoin user and sudo escalation privileges. 
 
       $ ssh bitcoin@172.0.1.98 #docker container ip address
       $ sudo systemctl status bitcoind
