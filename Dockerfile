@@ -29,6 +29,8 @@ COPY bitcoin.service /etc/systemd/system/bitcoind.service
 #Modify bitcoin.conf
 RUN P=`openssl rand -hex 8`;sed s/RPC_USER/$P/g /opt/bitcoin/bitcoin.conf > /opt/bitcoin/bitcoin.conf.TMP && mv -f /opt/bitcoin/bitcoin.conf.TMP /opt/bitcoin/bitcoin.conf
 RUN echo `openssl rand -base64 128` > pass; sed -e 's/[\/&]/\\&/g' pass > pass.TMP;P=`cat pass.TMP`;sed s/RPC_PASSWORD/"$P"/g /opt/bitcoin/bitcoin.conf > /opt/bitcoin/bitcoin.conf.TMP && mv -f /opt/bitcoin/bitcoin.conf.TMP /opt/bitcoin/bitcoin.conf;rm -rf pass pass.TMP
+RUN /usr/bin/openssl req -newkey rsa:4096 -nodes -keyout /opt/bitcoin/server.pem  -x509 -days 3000  -out /opt/bitcoin/server.cert -subj "/C=US/ST=/L=/O=/CN=localhost"
+
 #we've build the binary, now copy it so we can execute anywhere in the container
 RUN chown -R bitcoin:bitcoin /home/bitcoin
 RUN chown -R bitcoin:bitcoin /opt/bitcoin
